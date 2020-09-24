@@ -1,10 +1,15 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.Trainee;
+import com.example.demo.exception.IDNotFoundException;
 import com.example.demo.repository.TraineeRepository;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
+
+import static org.springframework.util.ObjectUtils.isEmpty;
 
 @Service
 public class TraineeService {
@@ -43,5 +48,13 @@ public class TraineeService {
 
     public Trainee addTrainee(Trainee trainee){
         return traineeRepository.save(trainee);
+    }
+
+    public void deleteTrainee(Long id) {
+        if(traineeRepository.findById(id).equals(Optional.empty()))
+        {
+            throw new IDNotFoundException("user id is not exist");
+        }
+        traineeRepository.deleteById(id);
     }
 }
