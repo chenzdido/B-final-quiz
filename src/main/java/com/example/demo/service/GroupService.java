@@ -47,11 +47,11 @@ public class GroupService {
         }
         System.out.println(traineesGroup);
         for(int j =0; j< groupNumber; j++){
-            String groupName = j+"组";
+            String groupName = j+1+"组";
             Groups groups = Groups.builder()
                     .name(groupName)
                     .trainees(traineesGroup.get(j))
-                    .trainers(trainerList.subList(j,j*2))
+                    .trainers(trainerList.subList(j*2,(j+1)*2))
                     .build();
             System.out.println(groups);
             groupsRepository.save(groups);
@@ -59,4 +59,6 @@ public class GroupService {
         }
         return groupsRepository.findAll();
     }
+
+
 }

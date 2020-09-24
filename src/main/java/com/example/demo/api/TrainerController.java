@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/trainers")
+@CrossOrigin("http://localhost:1234")
 public class TrainerController {
     private final TrainerService trainerService;
     public TrainerController(TrainerService trainerService) {

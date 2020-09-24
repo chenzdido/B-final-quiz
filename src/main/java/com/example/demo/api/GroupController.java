@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/groups")
+@CrossOrigin("http://localhost:1234")
 public class GroupController {
     private final GroupService groupService;
     public GroupController(GroupService groupService) {
