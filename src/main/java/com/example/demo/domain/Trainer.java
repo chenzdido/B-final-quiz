@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -18,22 +17,12 @@ import javax.validation.constraints.NotBlank;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Trainee {
+public class Trainer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @NotBlank(message = "trainee name is not empty")
+    @NotBlank(message = "trainer name is not empty")
     String name;
-    @NotBlank(message = "office is not empty")
-    String office;
-    @NotBlank(message = "email is not empty")
-    @Email
-    String email;
-    @NotBlank(message = "github is not empty")
-    String github;
-    @NotBlank(message = "zoomId is not empty")
-    String zoomId;
     @JsonIgnore
     String grouped;
-
 }
