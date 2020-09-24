@@ -9,31 +9,27 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Entity
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Trainee {
+public class Groups {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     @NotBlank(message = "trainee name is not empty")
     String name;
-    @NotBlank(message = "office is not empty")
-    String office;
-    @NotBlank(message = "email is not empty")
-    @Email
-    String email;
-    @NotBlank(message = "github is not empty")
-    String github;
-    @NotBlank(message = "zoomId is not empty")
-    String zoomId;
-    @JsonIgnore
-    String grouped;
-    @ManyToOne
-    @JsonIgnore
-    Groups groups;
-
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Trainee> trainees;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Trainer> trainers;
+    public void addTrainee(Trainee trainee) {
+        trainees.add(trainee);
+    }
+    public void addTrainer(Trainee trainer) {
+        trainees.add(trainer);
+    }
 }
