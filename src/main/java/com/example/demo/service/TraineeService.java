@@ -15,7 +15,7 @@ public class TraineeService {
                 .name("谌哲")
                 .office("深圳")
                 .email("zhe.chen@thousghtworks.com")
-                .githubName("chenZ")
+                .github("chenZ")
                 .zoomId("chenZ")
                 .grouped("false")
                 .build());
@@ -23,7 +23,7 @@ public class TraineeService {
                 .name("Foo")
                 .office("西安")
                 .email("foo@thousghtworks.com")
-                .githubName("foo")
+                .github("foo")
                 .zoomId("foo")
                 .grouped("false")
                 .build());
@@ -31,7 +31,7 @@ public class TraineeService {
                 .name("Bar")
                 .office("深圳")
                 .email("Bar@thousghtworks.com")
-                .githubName("Bar")
+                .github("Bar")
                 .zoomId("Bar")
                 .grouped("false")
                 .build());
@@ -39,5 +39,9 @@ public class TraineeService {
 
     public List<Trainee> getTrainee(String grouped){
         return traineeRepository.findAllByGrouped(grouped);
+    }
+
+    public Trainee addTrainee(Trainee trainee){
+        return traineeRepository.save(trainee);
     }
 }

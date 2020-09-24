@@ -2,11 +2,11 @@ package com.example.demo.api;
 
 import com.example.demo.domain.Trainee;
 import com.example.demo.service.TraineeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -18,8 +18,15 @@ public class TraineeController {
     }
 
     @GetMapping("")
-    public List<Trainee> getAllStudents(@RequestParam(value = "grouped", required = false) String grouped){
+    public List<Trainee> getAllTrainee(@RequestParam(value = "grouped", required = false) String grouped){
         return traineeService.getTrainee(grouped);
+    }
+
+    @PostMapping("")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Trainee addTrainee(@RequestBody @Valid Trainee trainee){
+        trainee.setGrouped("false");
+        return traineeService.addTrainee(trainee);
     }
 
 
