@@ -23,6 +23,10 @@ public class GroupService {
         this.groupsRepository = groupsRepository;
     }
 
+    public List<Groups> getAllGroups(){
+        return groupsRepository.findAll();
+    }
+
     public List<Groups> autoGrouping(){
         List<Trainer> trainerList = trainerRepository.findAll();
         int groupNumber = trainerList.size()/2;
