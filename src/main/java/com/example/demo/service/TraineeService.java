@@ -54,7 +54,7 @@ public class TraineeService {
     public void deleteTrainee(Long id) {
         if(traineeRepository.findById(id).equals(Optional.empty()))
         {
-            throw new IDNotFoundException("user id is not exist");
+            throw new IDNotFoundException("trainee is not exist");
         }
         traineeRepository.deleteById(id);
     }
