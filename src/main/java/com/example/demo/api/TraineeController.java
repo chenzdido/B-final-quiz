@@ -25,7 +25,6 @@ public class TraineeController {
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public Trainee addTrainee(@RequestBody @Valid Trainee trainee){
-        trainee.setGrouped("false");
         return traineeService.addTrainee(trainee);
     }
 

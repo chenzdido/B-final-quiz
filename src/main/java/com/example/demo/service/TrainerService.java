@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.domain.Trainee;
 import com.example.demo.domain.Trainer;
 import com.example.demo.repository.TraineeRepository;
 import com.example.demo.repository.TrainerRepository;
@@ -25,5 +26,10 @@ public class TrainerService {
 
     public List<Trainer> getTrainer(String grouped){
         return trainerRepository.findAllByGrouped(grouped);
+    }
+
+    public Trainer addTrainer(Trainer trainer){
+        trainer.setGrouped("false");
+        return trainerRepository.save(trainer);
     }
 }

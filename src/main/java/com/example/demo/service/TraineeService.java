@@ -47,6 +47,7 @@ public class TraineeService {
     }
 
     public Trainee addTrainee(Trainee trainee){
+        trainee.setGrouped("false");
         return traineeRepository.save(trainee);
     }
 
