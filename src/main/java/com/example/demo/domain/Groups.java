@@ -22,10 +22,12 @@ public class Groups {
     Long id;
     @NotBlank(message = "trainee name is not empty")
     String name;
+    //TODO GTB：建议尽量避免使用级联
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     List<Trainee> trainees;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     List<Trainer> trainers;
+    //TODO GTB：删掉未使用的方法
     public void addTrainee(Trainee trainee) {
         trainees.add(trainee);
     }

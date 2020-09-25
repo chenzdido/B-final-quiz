@@ -28,7 +28,9 @@ public class GroupService {
     }
 
     public List<Groups> autoGrouping(){
+        //TODO GTB：这个方法太长了，需要分模块抽方法重构
         List<Trainer> trainerList = trainerRepository.findAll();
+        //TODO GTB：Magic Number 2
         int groupNumber = trainerList.size()/2;
         List<Trainee> traineesList = traineeRepository.findAll();
         List<List<Trainee>> traineesGroup = new ArrayList<>(groupNumber);
@@ -36,10 +38,12 @@ public class GroupService {
             traineesGroup.add(new ArrayList<Trainee>());
         }
         Collections.shuffle(trainerList);
+        //TODO GTB: 尽量避免控制台输出log，可以看看@Slf4j，以及log输出规范
         System.out.println(traineesGroup.size());
         System.out.println(trainerList);
         Collections.shuffle(traineesList);
         System.out.println(traineesList);
+        //TODO GTB：变量名需要合理一些
         for (int i = 0; i < traineesList.size();){
             for (int k = 0; i < traineesList.size() && k <groupNumber; k++, i++){
                 traineesGroup.get(k).add(traineesList.get(i));

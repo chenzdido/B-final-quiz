@@ -17,6 +17,7 @@ public class TraineeController {
         this.traineeService = traineeService;
     }
 
+    //TODO GTB：BUG，当自动分组完成后，已经被分组的讲师，仍然会出现在这个list中
     @GetMapping("")
     public List<Trainee> getAllTrainee(@RequestParam(value = "grouped", required = false) String grouped){
         return traineeService.getTrainee(grouped);

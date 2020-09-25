@@ -30,6 +30,7 @@ public class Trainee {
     String github;
     @NotBlank(message = "zoomId is not empty")
     String zoomId;
+    //TODO GTB: grouped看起来就两个状态，true/false，考虑下boolean？
     @JsonIgnore
     String grouped;
     @ManyToOne
